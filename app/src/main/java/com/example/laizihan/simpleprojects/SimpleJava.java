@@ -1,6 +1,5 @@
 package com.example.laizihan.simpleprojects;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
@@ -10,17 +9,17 @@ import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 
 public class SimpleJava {
 
-    public static Bitmap createCode(Context context, String content) throws WriterException {
+    @SuppressWarnings("unchecked")
+    public static Bitmap createQrCodeBitmap(String content, int w, int h, int margin) throws WriterException {
         //生成二维矩阵,编码时指定大小,不要生成了图片以后再进行缩放,这样会模糊导致识别失败
-        Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
+        HashMap hints = new HashMap<>();
         hints.put(EncodeHintType.CHARACTER_SET, "utf-8");
-        hints.put(EncodeHintType.MARGIN, 1);
-        BitMatrix matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, 250,
-                250, hints);
+        hints.put(EncodeHintType.MARGIN, margin);
+        BitMatrix matrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, w, h, hints);
         int width = matrix.getWidth();
         int height = matrix.getHeight();
         //二维矩阵转为一维像素数组,也就是一直横着排了
