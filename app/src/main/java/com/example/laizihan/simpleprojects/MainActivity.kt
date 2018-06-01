@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
             bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             //通过像素数组生成bitmap
             bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
+            Log.e("tag","this is master commit")
+
         } catch (e: Throwable) {
 
         }
