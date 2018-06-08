@@ -12,16 +12,25 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        imageView.setImageBitmap(SimpleJava.createQrCodeBitmap("https://www.baidu.com", 400, 400, 1))
+
+        textView.text = 0x11.toString()
+//        imageView.setImageBitmap(SimpleJava.createQrCodeBitmap("https://www.baidu.com", 400, 400, 1))
+
+
     }
 
 
     fun createQrCodeBitmap(content: String, w: Int, h: Int, margin: Int): Bitmap? {
         var bitmap: Bitmap? = null
         try {
+
 
             //生成二维矩阵,编码时指定大小,不要生成了图片以后再进行缩放,这样会模糊导致识别失败
             val hints = HashMap<EncodeHintType, Any>()
