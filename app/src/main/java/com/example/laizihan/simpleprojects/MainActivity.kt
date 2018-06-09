@@ -1,5 +1,6 @@
 package com.example.laizihan.simpleprojects
 
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -14,17 +15,23 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
 
-
-
+    val s = "text"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        textView.text = 0x11.toString()
 //        imageView.setImageBitmap(SimpleJava.createQrCodeBitmap("https://www.baidu.com", 400, 400, 1))
+        edittext.setText(s)
+        edittext.setSelection(s.length)
 
 
+        imageView.setOnClickListener {
+
+            edittext.setText(null)
+        }
+
+        startActivity(Intent(this, WebviewActivity::class.java).also{Log.e("laizihan","start web activity")})
     }
 
 
@@ -54,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
             //通过像素数组生成bitmap
             bitmap.setPixels(pixels, 0, width, 0, 0, width, height)
-            Log.e("tag","this is master commit")
+            Log.e("tag", "this is master commit")
 
         } catch (e: Throwable) {
 
